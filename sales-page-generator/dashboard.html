@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tableau de Bord - SalesGenius AI</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="dashboard-page">
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-3"></div>
+    </div>
+
+    <div class="dashboard-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar glass-effect">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg viewBox="0 0 40 40" fill="none">
+                        <path d="M20 4L36 12V28L20 36L4 28V12L20 4Z" stroke="url(#gd)" stroke-width="2"
+                            fill="url(#gfd)" />
+                        <defs>
+                            <linearGradient id="gd" x1="4" y1="4" x2="36" y2="36">
+                                <stop offset="0%" stop-color="#8B5CF6" />
+                                <stop offset="100%" stop-color="#EC4899" />
+                            </linearGradient>
+                            <linearGradient id="gfd" x1="4" y1="4" x2="36" y2="36">
+                                <stop offset="0%" stop-color="rgba(139,92,246,0.2)" />
+                                <stop offset="100%" stop-color="rgba(236,72,153,0.2)" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                <span class="logo-text">SalesGenius<span class="highlight">AI</span></span>
+            </a>
+
+            <nav class="sidebar-nav">
+                <a href="#" class="nav-item active">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="7" />
+                        <rect x="14" y="3" width="7" height="7" />
+                        <rect x="14" y="14" width="7" height="7" />
+                        <rect x="3" y="14" width="7" height="7" />
+                    </svg>
+                    <span>Générateur</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
+                    </svg>
+                    <span>Mes Pages</span>
+                </a>
+                <a href="#" class="nav-item">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20v-6M6 20V10M18 20V4" />
+                    </svg>
+                    <span>Statistiques</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="user-profile">
+                    <div class="user-avatar gradient-bg" id="userInitial">U</div>
+                    <div class="user-info">
+                        <span class="user-name" id="userName">Utilisateur</span>
+                        <span class="user-email" id="userEmail">user@email.com</span>
+                    </div>
+                </div>
+                <button class="nav-item logout-btn" id="logoutBtn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4M16 17l5-5-5-5M21 12H9" />
+                    </svg>
+                    <span>Déconnexion</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="content-header">
+                <div>
+                    <h1>Générateur de Page de Vente</h1>
+                    <p>Remplissez les détails pour que l'IA crée votre page.</p>
+                </div>
+                <div class="badge-free glass-effect">Plan Gratuit Illimité 🚀</div>
+            </header>
+
+            <section class="generator-container">
+                <form id="generatorForm" class="generator-form">
+                    <div class="form-card glass-effect">
+                        <h3 class="card-title">Étape 1 : Informations du Produit</h3>
+                        <div class="form-group">
+                            <label for="productName">Nom du Produit / Service</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="productName"
+                                    placeholder="Ex: Course Pro - Formation IA Masterclass" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productPrice">Prix (en FCFA, € ou $)</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="productPrice" placeholder="Ex: 25 000 FCFA" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productCategory">Catégorie</label>
+                            <div class="input-wrapper">
+                                <select id="productCategory" class="custom-select">
+                                    <option value="formation">Formation / Coaching</option>
+                                    <option value="saas">Logiciel / SaaS</option>
+                                    <option value="ecommerce">E-commerce / Produit Physique</option>
+                                    <option value="service">Services (Agence, Freelance)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-card glass-effect">
+                        <h3 class="card-title">Étape 2 : Détails Irrésistibles</h3>
+                        <div class="form-group">
+                            <label for="productDescription">Description Courte (Le "Pitch")</label>
+                            <div class="textarea-wrapper">
+                                <textarea id="productDescription"
+                                    placeholder="Décrivez en 2-3 phrases ce que fait votre produit..."
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="productBenefits">3 Avantages Majeurs (un par ligne)</label>
+                            <div class="textarea-wrapper">
+                                <textarea id="productBenefits"
+                                    placeholder="Ex: Gagnez 10h par semaine&#10;Augmentez votre CA de 30%&#10;Formation 100% pratique"
+                                    required></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="targetAudience">Cible (À qui s'adresse ce produit ?)</label>
+                            <div class="input-wrapper">
+                                <input type="text" id="targetAudience"
+                                    placeholder="Ex: Entrepreneurs, Freelances, Étudiants..." required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-actions-sticky glass-effect">
+                        <button type="submit" class="btn btn-primary btn-large" id="generateBtn">
+                            <span>Générer Ma Page de Vente IA</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M5 12h14M12 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Loading State (Hidden) -->
+                <div id="loadingOverlay" class="loading-overlay" style="display: none;">
+                    <div class="loading-card glass-effect">
+                        <div class="ai-brain-animation">
+                            <div class="brain-icon">🧠</div>
+                            <div class="particles"></div>
+                        </div>
+                        <h3>L'IA rédige votre page...</h3>
+                        <p>Analyse du marché, copywriting persuasif et design en cours.</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progressBar"></div>
+                        </div>
+                        <div class="status-steps" id="statusSteps">
+                            <div class="status-step active" data-step="1">Analyse du produit...</div>
+                            <div class="status-step" data-step="2">Rédaction du Headline...</div>
+                            <div class="status-step" data-step="3">Structure de vente AIDA...</div>
+                            <div class="status-step" data-step="4">Finalisation du design...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Generated Result Modal -->
+    <div id="resultModal" class="modal" style="display: none;">
+        <div class="modal-content glass-effect full-screen">
+            <div class="modal-header">
+                <h2>Votre Page de Vente est Prête !</h2>
+                <div class="modal-actions">
+                    <button class="btn btn-ghost" id="copyCodeBtn">Copier le HTML</button>
+                    <button class="btn btn-primary" id="downloadBtn">Télécharger (.html)</button>
+                    <button class="btn btn-ghost" onclick="closeModal()">Fermer</button>
+                </div>
+            </div>
+            <div class="preview-frame-container">
+                <iframe id="previewIframe" src="about:blank"></iframe>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .dashboard-page {
+            background: #0b0f1a;
+        }
+
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            position: sticky;
+            top: 0;
+        }
+
+        .sidebar-nav {
+            margin-top: 3rem;
+            flex: 1;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            color: var(--text-gray);
+            text-decoration: none;
+            border-radius: 12px;
+            transition: var(--transition);
+            border: none;
+            background: none;
+            width: 100%;
+            cursor: pointer;
+            text-align: left;
+            margin-bottom: 0.5rem;
+        }
+
+        .nav-item:hover,
+        .nav-item.active {
+            background: rgba(139, 92, 246, 0.1);
+            color: var(--primary);
+        }
+
+        .sidebar-footer {
+            padding-top: 2rem;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .user-avatar {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+        }
+
+        .user-name {
+            display: block;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .user-email {
+            display: block;
+            color: var(--text-gray);
+            font-size: 0.8rem;
+        }
+
+        .content-header {
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .badge-free {
+            padding: 0.5rem 1rem;
+            border-radius: 100px;
+            font-weight: 600;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .custom-select {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .textarea-wrapper textarea {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: white;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .form-actions-sticky {
+            position: sticky;
+            bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 20px;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+            margin-top: 3rem;
+        }
+
+        /* Modal Result */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 2000;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .full-screen {
+            width: 95%;
+            height: 95%;
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .modal-header {
+            padding: 1.5rem 2rem;
+            border-bottom: 1px solid var(--glass-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .preview-frame-container {
+            flex: 1;
+            background: white;
+            margin: 1rem;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        #previewIframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Loading Animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.9);
+            z-index: 1500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .loading-card {
+            padding: 4rem;
+            border-radius: 32px;
+            max-width: 500px;
+        }
+
+        .ai-brain-animation {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 100px;
+            margin: 2rem 0;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            width: 0%;
+            transition: width 0.3s;
+        }
+
+        .status-steps {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .status-step {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .status-step::before {
+            content: "";
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--glass-border);
+            display: block;
+        }
+
+        .status-step.active {
+            color: white;
+            font-weight: 600;
+        }
+
+        .status-step.active::before {
+            background: var(--primary);
+            box-shadow: 0 0 10px var(--primary);
+        }
+    </style>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
